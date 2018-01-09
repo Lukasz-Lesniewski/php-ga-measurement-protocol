@@ -636,6 +636,8 @@ class Analytics
 
         $this->hits[] = $payload;
         $this->hitsSize += $payloadSize;
+        $this->singleParameters = [];
+        $this->compoundParametersCollections = [];
 
         return $this;
     }
