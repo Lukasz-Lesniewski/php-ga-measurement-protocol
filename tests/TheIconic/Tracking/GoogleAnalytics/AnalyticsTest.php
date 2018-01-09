@@ -196,7 +196,8 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
             ->setDocumentPath('\thepage')
             ->setHitType('pageview');
 
-        $result = $analyticsDisabled->sendPageview();
+        $analyticsDisabled->sendPageview();
+        $result = $analyticsDisabled->sendBatch();
         $this->assertInstanceOf(
             'TheIconic\Tracking\GoogleAnalytics\NullAnalyticsResponse',
             $result
@@ -226,7 +227,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     public function testSendSimpleSslHit()
@@ -249,7 +250,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analyticsSsl->setHttpClient($httpClient);
 
-        $this->analyticsSsl->sendPageview();
+        $this->analyticsSsl->sendPageview()->sendBatch();
     }
 
     public function testSendSimpleDebugHit()
@@ -272,7 +273,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     public function testFixTypos()
@@ -295,7 +296,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analyticsSsl->setHttpClient($httpClient);
 
-        $this->analyticsSsl->sendPageview();
+        $this->analyticsSsl->sendPageview()->sendBatch();
     }
 
     public function testSendComplexHit()
@@ -324,7 +325,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     public function testContentGroupingHit()
@@ -357,7 +358,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     /**
@@ -456,7 +457,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $url = $this->analytics->getUrl();
 
-        $this->assertEquals('http://www.google-analytics.com/collect', $url);
+        $this->assertEquals('http://www.google-analytics.com/batch', $url);
 
         $httpClient = $this->getMock('TheIconic\Tracking\GoogleAnalytics\Network\HttpClient', ['post']);
 
@@ -469,7 +470,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendEvent();
+        $this->analytics->sendEvent()->sendBatch();
     }
 
     /**
@@ -512,7 +513,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     public function testMinimumParametersForSendHitWithClientIdButMissingUserId()
@@ -534,7 +535,7 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $this->analytics->setHttpClient($httpClient);
 
-        $this->analytics->sendPageview();
+        $this->analytics->sendPageview()->sendBatch();
     }
 
     /**

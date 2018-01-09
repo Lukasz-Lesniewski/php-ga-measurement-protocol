@@ -56,14 +56,14 @@ use TheIconic\Tracking\GoogleAnalytics\Exception\InvalidPayloadDataException;
  * Hit
  * @method \TheIconic\Tracking\GoogleAnalytics\Analytics setHitType($value)
  * @method \TheIconic\Tracking\GoogleAnalytics\Analytics setNonInteractionHit($value)
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendPageview()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendEvent()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendScreenview()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendTransaction()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendItem()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendSocial()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendException()
- * @method \TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse sendTiming()
+ * @method self sendPageview()
+ * @method self sendEvent()
+ * @method self sendScreenview()
+ * @method self sendTransaction()
+ * @method self sendItem()
+ * @method self sendSocial()
+ * @method self sendException()
+ * @method self sendTiming()
  *
  * Content Information
  * @method \TheIconic\Tracking\GoogleAnalytics\Analytics setDocumentLocationUrl($value)
@@ -309,7 +309,7 @@ class Analytics
      *
      * @var string
      */
-    protected $endpoint = '://www.google-analytics.com/collect';
+    protected $endpoint = '://www.google-analytics.com/batch';
 
     /**
      * Endpoint to connect to when validating hits.
@@ -317,7 +317,7 @@ class Analytics
      *
      * @var string
      */
-    protected $debugEndpoint = '://www.google-analytics.com/debug/collect';
+    protected $debugEndpoint = '://www.google-analytics.com/debug/batch';
 
     /**
      * Indicates if the request is in debug mode(validating hits).
@@ -358,6 +358,9 @@ class Analytics
      * @var array
      */
     protected $options = [];
+
+  private $hits = [];
+  private $hitsSize = 0;
     
     /**
      * Initializes to a list of all the available parameters to be sent in a hit.
@@ -485,7 +488,12 @@ class Analytics
         $this->options = $options;
     }
 
-    /**
+    public function __destruct()
+    {
+       $this->sendBatch();
+    }
+
+  /**
      * Sets a request to be either synchronous or asynchronous (non-blocking).
      *
      * @api
@@ -570,30 +578,66 @@ class Analytics
     /**
      * Sends a hit to GA. The hit will contain in the payload all the parameters added before.
      *
-     * @param $methodName
      * @return AnalyticsResponseInterface
-     * @throws Exception\InvalidPayloadDataException
      */
-    protected function sendHit($methodName)
+    public function sendBatch()
     {
+        if ($this->isDisabled) {
+            return new NullAnalyticsResponse();
+        }
+
+        $payload = implode("\n", $this->hits);
+
+        $response = $this->getHttpClient()->post($this->getUrl(), $payload, $this->getHttpClientOptions());
+
+        $this->hits = [];
+        $this->hitsSize = 0;
+
+        return $response;
+    }
+
+    /**
+       * Queue a hit to GA. The hit will contain in the payload all the parameters added before.
+       *
+       * @param $methodName
+       * @return Analytics
+       * @throws Exception\InvalidPayloadDataException
+       * @throws \Exception
+     */
+    public function addHit($methodName) {
         $hitType = strtoupper(substr($methodName, 4));
 
         $hitConstant = $this->getParameterClassConstant(
-            'TheIconic\Tracking\GoogleAnalytics\Parameters\Hit\HitType::HIT_TYPE_' . $hitType,
-            'Hit type ' . $hitType . ' is not defined, check spelling'
+          'TheIconic\Tracking\GoogleAnalytics\Parameters\Hit\HitType::HIT_TYPE_' . $hitType,
+          'Hit type ' . $hitType . ' is not defined, check spelling'
         );
 
         $this->setHitType($hitConstant);
 
         if (!$this->hasMinimumRequiredParameters()) {
-            throw new InvalidPayloadDataException();
+          throw new InvalidPayloadDataException();
         }
 
-        if ($this->isDisabled) {
-            return new NullAnalyticsResponse();
+        $payload = $this->getData();
+
+        $payloadSize = mb_strlen($payload);
+
+        if (count($this->hits) > 19) { // A maximum of 20 hits can be specified per request.
+          $this->sendBatch();
         }
 
-        return $this->getHttpClient()->post($this->getUrl(), $this->getData(), $this->getHttpClientOptions());
+        if ($this->hitsSize + $payloadSize > 16 * 1024) { // The total size of all hit payloads cannot be greater than 16K bytes.
+          $this->sendBatch();
+        }
+
+        if ($payloadSize > 8 * 1024) { // No single hit payload can be greater than 8K bytes.
+          throw new \Exception("No single hit payload can be greater than 8K bytes.");
+        }
+
+        $this->hits[] = $payload;
+        $this->hitsSize += $payloadSize;
+
+        return $this;
     }
 
     /**
@@ -888,7 +932,7 @@ class Analytics
         }
 
         if (preg_match('/^(send)(\w+)/', $methodName, $matches)) {
-            return $this->sendHit($methodName);
+            return $this->addHit($methodName);
         }
 
         // Get Parameters
