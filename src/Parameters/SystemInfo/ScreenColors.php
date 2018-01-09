@@ -19,4 +19,18 @@ class ScreenColors extends SingleParameter
      * @var string
      */
     protected $name = 'sd';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

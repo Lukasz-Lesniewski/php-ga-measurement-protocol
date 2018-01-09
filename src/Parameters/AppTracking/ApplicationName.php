@@ -19,4 +19,18 @@ class ApplicationName extends SingleParameter
      * @var string
      */
     protected $name = 'an';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 100;
 }

@@ -19,4 +19,18 @@ class UserLanguage extends SingleParameter
      * @var string
      */
     protected $name = 'ul';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

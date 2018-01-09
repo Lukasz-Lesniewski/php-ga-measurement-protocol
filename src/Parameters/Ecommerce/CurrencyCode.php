@@ -19,4 +19,18 @@ class CurrencyCode extends SingleParameter
      * @var string
      */
     protected $name = 'cu';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 10;
 }

@@ -19,4 +19,18 @@ class CampaignId extends SingleParameter
      * @var string
      */
     protected $name = 'ci';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 100;
 }

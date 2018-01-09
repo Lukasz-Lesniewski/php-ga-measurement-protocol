@@ -19,4 +19,18 @@ class UserTimingLabel extends SingleParameter
      * @var string
      */
     protected $name = 'utl';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

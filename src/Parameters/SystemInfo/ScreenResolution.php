@@ -19,4 +19,18 @@ class ScreenResolution extends SingleParameter
      * @var string
      */
     protected $name = 'sr';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

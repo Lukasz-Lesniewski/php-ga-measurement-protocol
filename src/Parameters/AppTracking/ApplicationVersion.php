@@ -19,4 +19,18 @@ class ApplicationVersion extends SingleParameter
      * @var string
      */
     protected $name = 'av';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 100;
 }

@@ -20,6 +20,20 @@ class ContentGroup extends SingleParameter
      */
     protected $name = 'cg:i:';
 
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 100;
+
     /**
      * @inheritDoc
      *

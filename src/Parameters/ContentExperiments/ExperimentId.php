@@ -19,4 +19,18 @@ class ExperimentId extends SingleParameter
      * @var string
      */
     protected $name = 'xid';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 40;
 }

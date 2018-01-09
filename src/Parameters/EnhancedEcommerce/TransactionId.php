@@ -19,4 +19,18 @@ class TransactionId extends SingleParameter
      * @var string
      */
     protected $name = 'ti';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

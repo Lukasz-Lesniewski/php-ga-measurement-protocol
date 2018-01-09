@@ -19,4 +19,18 @@ class CampaignName extends SingleParameter
      * @var string
      */
     protected $name = 'cn';
+
+    /**
+     * @inheritDoc
+     *
+     * @var string
+     */
+    protected $type = 'string';
+
+    /**
+     * @inheritDoc
+     *
+     * @var int
+     */
+    protected $length = 100;
 }

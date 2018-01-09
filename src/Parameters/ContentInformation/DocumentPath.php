@@ -19,4 +19,18 @@ class DocumentPath extends SingleParameter
      * @var string
      */
     protected $name = 'dp';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 2048;
 }

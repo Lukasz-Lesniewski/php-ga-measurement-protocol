@@ -19,4 +19,18 @@ class FlashVersion extends SingleParameter
      * @var string
      */
     protected $name = 'fl';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

@@ -19,4 +19,18 @@ class DocumentTitle extends SingleParameter
      * @var string
      */
     protected $name = 'dt';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 1500;
 }

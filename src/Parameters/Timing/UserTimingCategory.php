@@ -19,4 +19,18 @@ class UserTimingCategory extends SingleParameter
      * @var string
      */
     protected $name = 'utc';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 150;
 }

@@ -31,6 +31,20 @@ abstract class SingleParameter implements SingleParameterInterface
     protected $value;
 
     /**
+     * Expected type of the value.
+     *
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * Maximum length of text-type value.
+     *
+     * @var int
+     */
+    protected $length;
+
+    /**
      * Indexes the name when necessary.
      *
      * @param $index
@@ -53,6 +67,14 @@ abstract class SingleParameter implements SingleParameterInterface
      */
     public function setValue($value)
     {
+        if (!is_null($this->type) && $this->type !== gettype($value)) {
+          throw new \Exception("Value has different type then expected");
+        }
+
+        if ("string" === $this->type && !is_null($this->length) && mb_strlen($value) > $this->length) {
+          throw new \Exception("Value exceeds maximum allowed length");
+        }
+
         $this->value = $value;
 
         return $this;

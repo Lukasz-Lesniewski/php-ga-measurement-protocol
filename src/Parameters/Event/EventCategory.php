@@ -19,4 +19,18 @@ class EventCategory extends SingleParameter
      * @var string
      */
     protected $name = 'ec';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 150;
 }

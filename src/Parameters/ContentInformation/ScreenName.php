@@ -19,4 +19,18 @@ class ScreenName extends SingleParameter
      * @var string
      */
     protected $name = 'cd';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 2048;
 }

@@ -52,8 +52,19 @@ class SingleParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testValue()
     {
-        $this->stubSingleParameter->setValue(10);
+        $this->stubSingleParameter->setValue('test');
 
-        $this->assertEquals(10, $this->stubSingleParameter->getValue());
+        $this->assertEquals('test', $this->stubSingleParameter->getValue());
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage Value exceeds maximum allowed length
+     *
+     * @throws \Exception
+     */
+    public function testValueTooLong()
+    {
+      $this->stubSingleParameter->setValue('too long text');
     }
 }

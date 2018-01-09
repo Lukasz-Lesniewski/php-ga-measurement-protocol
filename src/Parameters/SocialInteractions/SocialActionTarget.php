@@ -17,4 +17,18 @@ class SocialActionTarget
      * @var string
      */
     protected $name = 'st';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 2048;
 }

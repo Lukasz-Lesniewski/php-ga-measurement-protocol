@@ -19,4 +19,18 @@ class ItemCategory extends SingleParameter
      * @var string
      */
     protected $name = 'iv';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

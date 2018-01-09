@@ -19,4 +19,18 @@ class ItemName extends SingleParameter
      * @var string
      */
     protected $name = 'in';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

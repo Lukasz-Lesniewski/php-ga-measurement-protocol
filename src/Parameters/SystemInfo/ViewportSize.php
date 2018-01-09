@@ -19,4 +19,18 @@ class ViewportSize extends SingleParameter
      * @var string
      */
     protected $name = 'vp';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

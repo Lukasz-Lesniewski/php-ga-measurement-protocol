@@ -19,4 +19,18 @@ class ApplicationInstallerId extends SingleParameter
      * @var string
      */
     protected $name = 'aiid';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 150;
 }

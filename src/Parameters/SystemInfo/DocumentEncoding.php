@@ -19,4 +19,18 @@ class DocumentEncoding extends SingleParameter
      * @var string
      */
     protected $name = 'de';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 20;
 }

@@ -19,4 +19,18 @@ class CampaignContent extends SingleParameter
      * @var string
      */
     protected $name = 'cc';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

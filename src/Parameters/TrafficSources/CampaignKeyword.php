@@ -19,4 +19,18 @@ class CampaignKeyword extends SingleParameter
      * @var string
      */
     protected $name = 'ck';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

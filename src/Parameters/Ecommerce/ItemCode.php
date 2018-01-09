@@ -19,4 +19,18 @@ class ItemCode extends SingleParameter
      * @var string
      */
     protected $name = 'ic';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 500;
 }

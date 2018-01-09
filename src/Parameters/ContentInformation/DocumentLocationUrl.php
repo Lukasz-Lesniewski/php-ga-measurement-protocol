@@ -19,4 +19,18 @@ class DocumentLocationUrl extends SingleParameter
      * @var string
      */
     protected $name = 'dl';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 2048;
 }

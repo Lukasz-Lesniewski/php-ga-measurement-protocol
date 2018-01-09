@@ -19,4 +19,18 @@ class CampaignMedium extends SingleParameter
      * @var string
      */
     protected $name = 'cm';
+
+  /**
+   * @inheritDoc
+   *
+   * @var string
+   */
+  protected $type = 'string';
+
+  /**
+   * @inheritDoc
+   *
+   * @var int
+   */
+  protected $length = 50;
 }
