@@ -19,4 +19,6 @@ class EventValue extends SingleParameter
      * @var string
      */
     protected $name = 'ev';
+
+    protected $type = 'integer';
 }
