@@ -39,7 +39,7 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
 
         $this->setExpectedException(\UnexpectedValueException::class, $exceptionMessage);
 
-        $this->httpClient->post('http://test-collector.com/collect?v=1', $options);
+        $this->httpClient->post('http://test-collector.com/collect?v=1', null, $options);
     }
 
     public static function dataProviderInvalidOptions()
@@ -123,11 +123,12 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
 
         $responseAsync = $this->mockHttpClient->post(
             'http://test-collector.com/collect?v=1',
+            null,
             ['async' => true, 'timeout' => 30]
         );
         $this->assertInstanceOf('GuzzleHttp\Promise\PromiseInterface', $responseAsync);
 
-        $response = $this->httpClient->post('http://test-collector.com/collect?v=1', ['timeout' => 3]);
+        $response = $this->httpClient->post('http://test-collector.com/collect?v=1', null, ['timeout' => 3]);
 
         $this->assertInstanceOf('TheIconic\Tracking\GoogleAnalytics\AnalyticsResponse', $response);
 

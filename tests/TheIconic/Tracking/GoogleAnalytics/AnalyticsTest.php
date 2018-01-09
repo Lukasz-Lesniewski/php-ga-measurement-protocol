@@ -456,14 +456,15 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $url = $this->analytics->getUrl();
 
-        $this->assertEquals('http://www.google-analytics.com/collect?v=1&tid=555&cid=666&aip=1&ds=call%20center&qt=560&ni=1&dclid=d_click_id&uip=202.126.106.175&ti=7778922&ta=THE%20ICONIC&tr=250&tt=25&ts=15&tcc=MY_COUPON&t=event&pa=purchase&cm3=50&pr1id=AAAA-6666&pr1nm=Test%20Product%202&pr1br=Test%20Brand%202&pr1ca=Test%20Category%203%2FTest%20Category%204&pr1va=yellow&pr1pr=50&pr1qt=1&pr1cc=TEST%202&pr1ps=2&pr2id=AAAA-5555&pr2nm=Test%20Product&pr2br=Test%20Brand&pr2ca=Test%20Category%201%2FTest%20Category%202&pr2va=blue&pr2pr=85&pr2qt=2&pr2cc=TEST&pr2ps=4&pr2cd1=iamcustomdim1&pr2cd2=iamcustomdim2&pr2cm1=666.99&pr2cm2=999&z=289372387623', $url);
+        $this->assertEquals('http://www.google-analytics.com/collect', $url);
 
         $httpClient = $this->getMock('TheIconic\Tracking\GoogleAnalytics\Network\HttpClient', ['post']);
 
         $httpClient->expects($this->once())
             ->method('post')
             ->with(
-                $this->equalTo($url)
+                $this->equalTo($url),
+                $this->equalTo('v=1&tid=555&cid=666&aip=1&ds=call%20center&qt=560&ni=1&dclid=d_click_id&uip=202.126.106.175&ti=7778922&ta=THE%20ICONIC&tr=250&tt=25&ts=15&tcc=MY_COUPON&t=event&pa=purchase&cm3=50&pr1id=AAAA-6666&pr1nm=Test%20Product%202&pr1br=Test%20Brand%202&pr1ca=Test%20Category%203%2FTest%20Category%204&pr1va=yellow&pr1pr=50&pr1qt=1&pr1cc=TEST%202&pr1ps=2&pr2id=AAAA-5555&pr2nm=Test%20Product&pr2br=Test%20Brand&pr2ca=Test%20Category%201%2FTest%20Category%202&pr2va=blue&pr2pr=85&pr2qt=2&pr2cc=TEST&pr2ps=4&pr2cd1=iamcustomdim1&pr2cd2=iamcustomdim2&pr2cm1=666.99&pr2cm2=999&z=289372387623')
             );
 
         $this->analytics->setHttpClient($httpClient);
@@ -505,7 +506,8 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
         $httpClient->expects($this->once())
             ->method('post')
             ->with(
-                $this->equalTo($this->analytics->getUrl() . '&t=pageview')
+                $this->equalTo($this->analytics->getUrl()),
+                $this->equalTo('v=1&tid=UA-26293424-11&uid=sdsdsd&dp=%2F&t=pageview')
             );
 
         $this->analytics->setHttpClient($httpClient);
@@ -526,7 +528,8 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
         $httpClient->expects($this->once())
             ->method('post')
             ->with(
-                $this->equalTo($this->analytics->getUrl() . '&t=pageview')
+                $this->equalTo($this->analytics->getUrl()),
+                $this->equalTo('v=1&tid=UA-26293424-11&cid=sdsdsd&dp=%2F&t=pageview')
             );
 
         $this->analytics->setHttpClient($httpClient);
@@ -573,7 +576,11 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
 
         $httpClient->expects($this->once())
             ->method('post')
-            ->with($this->equalTo($analytics->getUrl()), $expectedOptions);
+            ->with(
+              $this->equalTo($analytics->getUrl()),
+              $this->equalTo('v=1&tid=555&cid=666&dp=%5Cthepage&t=pageview'),
+              $expectedOptions
+            );
 
         $analytics->setHttpClient($httpClient);
         $analytics->sendPageview();

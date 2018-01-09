@@ -30,7 +30,7 @@ class PrepareUrlTest extends \PHPUnit_Framework_TestCase
         $compoundCollection->add($compoundParameter2);
         $compounds = [$compoundCollection];
 
-        $url = $prepareUrl->build('http://test-collector.com', $singles, $compounds);
+        $url = $prepareUrl->buildGet('http://test-collector.com', $singles, $compounds);
 
         $payload = $prepareUrl->getPayloadParameters();
 

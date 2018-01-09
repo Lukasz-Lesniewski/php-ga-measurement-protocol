@@ -34,22 +34,34 @@ class PrepareUrl
      * @param CompoundParameterCollection[] $compoundParameters
      * @return string
      */
-    public function build($url, array $singleParameters, array $compoundParameters)
+    public function buildGet($url, array $singleParameters, array $compoundParameters)
     {
-        $singlesPost = $this->getSingleParametersPayload($singleParameters);
-
-        $compoundsPost = $this->getCompoundParametersPayload($compoundParameters);
-
-        $this->payloadParameters = array_merge($singlesPost, $compoundsPost);
-
-        if (!empty($this->cacheBuster)) {
-            $this->payloadParameters['z'] = $this->cacheBuster;
-        }
-        $query = http_build_query($this->payloadParameters, null, ini_get('arg_separator.output'), PHP_QUERY_RFC3986);
-        return $url . '?' . $query;
+        return $url . '?' . $this->buildQuery($singleParameters, $compoundParameters);
     }
 
     /**
+     * Build Query which is sent to Google Analytics
+     *
+     * @internal
+     * @param SingleParameter[] $singleParameters
+     * @param CompoundParameterCollection[] $compoundParameters
+     * @return string
+     */
+    public function buildQuery(array $singleParameters, array $compoundParameters) {
+      $singlesPost = $this->getSingleParametersPayload($singleParameters);
+
+      $compoundsPost = $this->getCompoundParametersPayload($compoundParameters);
+
+      $this->payloadParameters = array_merge($singlesPost, $compoundsPost);
+
+      if (!empty($this->cacheBuster)) {
+        $this->payloadParameters['z'] = $this->cacheBuster;
+      }
+
+      return http_build_query($this->payloadParameters, null, ini_get('arg_separator.output'), PHP_QUERY_RFC3986);
+    }
+
+  /**
      * @internal
      * @return array
      */

@@ -83,15 +83,17 @@ class HttpClient
      *
      * @internal
      * @param string $url
+     * @param mixed $body
      * @param array $options
      * @return AnalyticsResponse
      */
-    public function post($url, array $options = [])
+    public function post($url, $body = null, array $options = [])
     {
         $request = new Request(
             'GET',
             $url,
-            ['User-Agent' => self::PHP_GA_MEASUREMENT_PROTOCOL_USER_AGENT]
+            ['User-Agent' => self::PHP_GA_MEASUREMENT_PROTOCOL_USER_AGENT],
+            $body
         );
 
         $opts = $this->parseOptions($options);

@@ -593,7 +593,7 @@ class Analytics
             return new NullAnalyticsResponse();
         }
 
-        return $this->getHttpClient()->post($this->getUrl(), $this->getHttpClientOptions());
+        return $this->getHttpClient()->post($this->getUrl(), $this->getData(), $this->getHttpClientOptions());
     }
 
     /**
@@ -620,13 +620,18 @@ class Analytics
      */
     public function getUrl()
     {
-        $prepareUrl = new PrepareUrl;
+        return $this->getEndpoint();
+    }
 
-        return $prepareUrl->build(
-            $this->getEndpoint(),
-            $this->singleParameters,
-            $this->compoundParametersCollections
-        );
+    public function getData()
+    {
+      $prepareUrl = new PrepareUrl();
+
+      return $prepareUrl->buildQuery(
+        $this->singleParameters,
+        $this->compoundParametersCollections
+      );
+
     }
 
     /**
