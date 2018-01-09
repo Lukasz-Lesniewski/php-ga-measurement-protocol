@@ -90,7 +90,7 @@ class HttpClient
     public function post($url, $body = null, array $options = [])
     {
         $request = new Request(
-            'GET',
+            'POST',
             $url,
             ['User-Agent' => self::PHP_GA_MEASUREMENT_PROTOCOL_USER_AGENT],
             $body
