@@ -22,6 +22,7 @@ interface SingleParameterInterface
      * @internal
      * @param $value
      * @return $this
+     * @throws \Exception
      */
     public function setValue($value);
 
