@@ -19,4 +19,6 @@ class ExperimentVariant extends SingleParameter
      * @var string
      */
     protected $name = 'xvar';
+
+    protected $type = 'string';
 }

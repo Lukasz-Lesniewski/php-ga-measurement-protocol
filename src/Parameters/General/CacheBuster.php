@@ -19,4 +19,6 @@ class CacheBuster extends SingleParameter
      * @var string
      */
     protected $name = 'z';
+
+    protected $type = 'string';
 }

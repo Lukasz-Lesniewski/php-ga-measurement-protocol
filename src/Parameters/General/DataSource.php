@@ -19,4 +19,6 @@ class DataSource extends SingleParameter
      * @var string
      */
     protected $name = 'ds';
+
+    protected $type = 'string';
 }

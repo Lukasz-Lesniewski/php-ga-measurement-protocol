@@ -19,4 +19,6 @@ class ItemQuantity extends SingleParameter
      * @var string
      */
     protected $name = 'iq';
+
+    protected $type = 'integer';
 }

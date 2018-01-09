@@ -19,4 +19,6 @@ class CustomMetric extends SingleParameter
      * @var string
      */
     protected $name = 'cm:i:';
+
+    protected $type = 'number';
 }

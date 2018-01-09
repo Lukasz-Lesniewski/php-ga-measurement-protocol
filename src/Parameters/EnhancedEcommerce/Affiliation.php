@@ -19,4 +19,8 @@ class Affiliation extends SingleParameter
      * @var string
      */
     protected $name = 'ta';
+
+    protected $type = 'string';
+
+    protected $length = 500;
 }

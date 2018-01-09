@@ -19,4 +19,6 @@ class NonInteractionHit extends SingleParameter
      * @var string
      */
     protected $name = 'ni';
+
+    protected $type = 'boolean';
 }

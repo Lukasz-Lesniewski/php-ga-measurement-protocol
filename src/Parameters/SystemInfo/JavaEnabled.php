@@ -19,4 +19,6 @@ class JavaEnabled extends SingleParameter
      * @var string
      */
     protected $name = 'je';
+
+    protected $type = 'boolean';
 }

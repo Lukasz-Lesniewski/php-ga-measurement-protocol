@@ -19,4 +19,6 @@ class ServerResponseTime extends SingleParameter
      * @var string
      */
     protected $name = 'srt';
+
+    protected $type = 'integer';
 }

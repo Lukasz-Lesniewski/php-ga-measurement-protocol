@@ -19,4 +19,6 @@ class ClientId extends SingleParameter
      * @var string
      */
     protected $name = 'cid';
+
+    protected $type = 'string';
 }

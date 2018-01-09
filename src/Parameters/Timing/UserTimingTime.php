@@ -19,4 +19,6 @@ class UserTimingTime extends SingleParameter
      * @var string
      */
     protected $name = 'utt';
+
+    protected $type = 'integer';
 }

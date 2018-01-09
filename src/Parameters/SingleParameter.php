@@ -44,6 +44,14 @@ abstract class SingleParameter implements SingleParameterInterface
      */
     protected $length;
 
+    protected function checkType($value) {
+      $type = gettype($value);
+
+      if ($this->type != 'number') return $this->type !== $type;
+
+      return 'float' !== $type && 'integer' !== $type;
+    }
+
     /**
      * Indexes the name when necessary.
      *
@@ -67,7 +75,7 @@ abstract class SingleParameter implements SingleParameterInterface
      */
     public function setValue($value)
     {
-        if (!is_null($this->type) && $this->type !== gettype($value)) {
+        if (!is_null($this->type) && $this->checkType($value)) {
           throw new \Exception("Value has different type then expected");
         }
 

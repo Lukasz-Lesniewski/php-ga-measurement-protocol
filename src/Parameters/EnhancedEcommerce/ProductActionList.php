@@ -19,4 +19,6 @@ class ProductActionList extends SingleParameter
      * @var string
      */
     protected $name = 'pal';
+
+    protected $type = 'string';
 }

@@ -19,4 +19,6 @@ class TcpConnectTime extends SingleParameter
      * @var string
      */
     protected $name = 'tcp';
+
+    protected $type = 'integer';
 }

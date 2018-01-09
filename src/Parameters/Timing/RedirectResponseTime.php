@@ -19,4 +19,6 @@ class RedirectResponseTime extends SingleParameter
      * @var string
      */
     protected $name = 'rrt';
+
+    protected $type = 'integer';
 }

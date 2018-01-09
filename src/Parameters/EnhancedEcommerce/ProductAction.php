@@ -59,4 +59,6 @@ class ProductAction extends SingleParameter
      * @var string
      */
     protected $name = 'pa';
+
+    protected $type = 'string';
 }

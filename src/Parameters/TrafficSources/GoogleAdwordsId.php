@@ -19,4 +19,6 @@ class GoogleAdwordsId extends SingleParameter
      * @var string
      */
     protected $name = 'gclid';
+
+    protected $type = 'string';
 }

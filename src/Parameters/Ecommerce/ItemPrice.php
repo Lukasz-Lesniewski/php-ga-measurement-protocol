@@ -19,4 +19,6 @@ class ItemPrice extends SingleParameter
      * @var string
      */
     protected $name = 'ip';
+
+    protected $type = 'string';
 }

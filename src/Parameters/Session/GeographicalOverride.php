@@ -19,4 +19,6 @@ class GeographicalOverride extends SingleParameter
      * @var string
      */
     protected $name = 'geoid';
+
+    protected $type = 'string';
 }

@@ -19,4 +19,6 @@ class GoogleDisplayAdsId extends SingleParameter
      * @var string
      */
     protected $name = 'dclid';
+
+    protected $type = 'string';
 }

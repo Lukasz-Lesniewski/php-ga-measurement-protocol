@@ -19,4 +19,6 @@ class CheckoutStep extends SingleParameter
      * @var string
      */
     protected $name = 'cos';
+
+    protected $type = 'integer';
 }

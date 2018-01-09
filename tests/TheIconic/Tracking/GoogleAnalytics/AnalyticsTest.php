@@ -377,11 +377,11 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
             'tid' => (new TrackingId())->setValue('555'),
             'cid' => (new ClientId())->setValue('666'),
             't' => (new HitType())->setValue('event'),
-            'aip' => (new AnonymizeIp())->setValue('1'),
+            'aip' => (new AnonymizeIp())->setValue(true),
             'z' => (new CacheBuster())->setValue('289372387623'),
             'ds' => (new DataSource())->setValue('call center'),
-            'qt' => (new QueueTime())->setValue('560'),
-            'ni' => (new NonInteractionHit())->setValue('1'),
+            'qt' => (new QueueTime())->setValue(560),
+            'ni' => (new NonInteractionHit())->setValue(true),
             'dclid' => (new GoogleDisplayAdsId())->setValue('d_click_id'),
             'uip' => (new IpOverride())->setValue('202.126.106.175'),
             'ti' => (new TransactionId())->setValue('7778922'),
@@ -398,11 +398,11 @@ class AnalyticsTest extends \PHPUnit_Framework_TestCase
             ->setProtocolVersion('1')
             ->setTrackingId('555')
             ->setClientId('666')
-            ->setAnonymizeIp('1')
+            ->setAnonymizeIp(true)
             ->setCacheBuster('289372387623')
             ->setDataSource('call center')
-            ->setQueueTime('560')
-            ->setNonInteractionHit('1')
+            ->setQueueTime(560)
+            ->setNonInteractionHit(true)
             ->setGoogleDisplayAdsId('d_click_id')
             ->setIpOverride("202.126.106.175");
 

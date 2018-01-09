@@ -17,4 +17,6 @@ class ContentLoadTime extends SingleParameter
      * @var string
      */
     protected $name = 'clt';
+
+    protected $type = 'integer';
 }

@@ -19,4 +19,6 @@ class IpOverride extends SingleParameter
      * @var string
      */
     protected $name = 'uip';
+
+    protected $type = 'string';
 }

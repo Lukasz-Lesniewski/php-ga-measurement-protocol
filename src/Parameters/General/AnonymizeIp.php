@@ -19,4 +19,6 @@ class AnonymizeIp extends SingleParameter
      * @var string
      */
     protected $name = 'aip';
+
+    protected $type = 'boolean';
 }

@@ -19,4 +19,6 @@ class DomInteractiveTime extends SingleParameter
      * @var string
      */
     protected $name = 'dit';
+
+    protected $type = 'integer';
 }

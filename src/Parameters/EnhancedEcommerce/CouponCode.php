@@ -19,4 +19,6 @@ class CouponCode extends SingleParameter
      * @var string
      */
     protected $name = 'tcc';
+
+    protected $type = 'string';
 }

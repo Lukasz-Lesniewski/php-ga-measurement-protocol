@@ -29,4 +29,6 @@ class PromotionAction extends SingleParameter
      * @var string
      */
     protected $name = 'promoa';
+
+    protected $type = 'string';
 }

@@ -19,4 +19,6 @@ class QueueTime extends SingleParameter
      * @var string
      */
     protected $name = 'qt';
+
+    protected $type = 'integer';
 }

@@ -19,4 +19,6 @@ class ProductImpressionListName extends SingleParameter
      * @var string
      */
     protected $name = 'il:i:nm';
+
+    protected $type = 'string';
 }

@@ -19,4 +19,6 @@ class ProtocolVersion extends SingleParameter
      * @var string
      */
     protected $name = 'v';
+
+    protected $type = 'string';
 }

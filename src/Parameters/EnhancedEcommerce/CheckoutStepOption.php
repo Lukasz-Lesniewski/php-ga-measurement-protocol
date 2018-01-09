@@ -19,4 +19,6 @@ class CheckoutStepOption extends SingleParameter
      * @var string
      */
     protected $name = 'col';
+
+    protected $type = 'string';
 }

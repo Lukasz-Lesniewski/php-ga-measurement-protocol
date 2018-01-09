@@ -19,4 +19,6 @@ class DnsTime extends SingleParameter
      * @var string
      */
     protected $name = 'dns';
+
+    protected $type = 'integer';
 }

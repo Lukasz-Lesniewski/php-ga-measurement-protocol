@@ -77,4 +77,6 @@ class HitType extends SingleParameter
      * @var string
      */
     protected $name = 't';
+
+    protected $type = 'string';
 }

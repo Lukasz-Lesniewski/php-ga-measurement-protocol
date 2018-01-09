@@ -19,4 +19,6 @@ class PageLoadTime extends SingleParameter
      * @var string
      */
     protected $name = 'plt';
+
+    protected $type = 'integer';
 }

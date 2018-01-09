@@ -29,4 +29,6 @@ class SessionControl extends SingleParameter
      * @var string
      */
     protected $name = 'sc';
+
+    protected $type = 'string';
 }

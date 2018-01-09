@@ -19,4 +19,6 @@ class UserAgentOverride extends SingleParameter
      * @var string
      */
     protected $name = 'ua';
+
+    protected $type = 'string';
 }

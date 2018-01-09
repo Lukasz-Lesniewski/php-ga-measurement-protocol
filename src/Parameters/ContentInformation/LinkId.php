@@ -19,4 +19,6 @@ class LinkId extends SingleParameter
      * @var string
      */
     protected $name = 'linkid';
+
+    protected $type = 'string';
 }

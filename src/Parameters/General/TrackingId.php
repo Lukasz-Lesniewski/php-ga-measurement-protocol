@@ -19,4 +19,6 @@ class TrackingId extends SingleParameter
      * @var string
      */
     protected $name = 'tid';
+
+    protected $type = 'string';
 }

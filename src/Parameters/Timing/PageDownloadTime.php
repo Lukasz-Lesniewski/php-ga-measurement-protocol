@@ -19,4 +19,6 @@ class PageDownloadTime extends SingleParameter
      * @var string
      */
     protected $name = 'pdt';
+
+    protected $type = 'integer';
 }

@@ -19,4 +19,6 @@ class UserId extends SingleParameter
      * @var string
      */
     protected $name = 'uid';
+
+    protected $type = 'string';
 }

@@ -19,4 +19,6 @@ class IsExceptionFatal extends SingleParameter
      * @var string
      */
     protected $name = 'exf';
+
+    protected $type = 'boolean';
 }
